@@ -1,8 +1,21 @@
 package com.example.springbootdemo.Student;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table
 public class Student {
+    @Id
+    @SequenceGenerator(
+            name = "student_squence",
+            sequenceName = "student_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_squence"
+    )
     private Long id;
     private String name;
     private String email;
